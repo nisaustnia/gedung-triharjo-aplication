@@ -1,0 +1,35 @@
+{
+  "name": "backendgth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ak8ar12ullah/backendGTH.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ak8ar12ullah/backendGTH/issues"
+  },
+  "homepage": "https://github.com/ak8ar12ullah/backendGTH#readme",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.2",
+    "axios": "^1.6.5",
+    "dotenv": "^16.3.1",
+    "googleapis": "^130.0.0",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.6.5"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.3",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1"
+  }
+}
