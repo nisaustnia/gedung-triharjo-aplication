@@ -22,14 +22,15 @@ class FormPilihan2Widget extends StatefulWidget {
 class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
   late Event eventData;
   List<String> chipValues = [
-    '07:00 - 09:00',
-    '09:00 - 11:00',
-    '11:00 - 13:00',
-    '13:00 - 15:00',
-    '15:00 - 17:00',
-    '17:00 - 19:00',
-    '19:00 - 21:00',
-    '21:00 - 23:00',
+    '06:00 - 08:00',
+    '08:00 - 10:00',
+    '10:00 - 12:00',
+    '12:00 - 14:00',
+    '14:00 - 16:00',
+    '16:00 - 18:00',
+    '18:00 - 20:00',
+    '20:00 - 22:00',
+    '22:00 - 24:00',
   ];
 
   String chipValuesTime(index) {
@@ -53,7 +54,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
   String? selectedTipeBerlangganan;
   List<String> optionsLangganan = [
     'Berlangganan',
-    'Gedung',
+    'Non Berlangganan',
   ];
   List<String> optionsKeperluan = [
     'Hajatan / pernikahan',
@@ -279,7 +280,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 selectedTipe2 = null;
                 selectedChipIndex = -1;
               });
-            } else if (newValue == 'Gedung') {
+            } else if (newValue == 'Non Berlangganan') {
               eventViewModel.gantiHargaGedung(0);
               eventViewModel.gantiTipeSesi('');
               setState(() {
@@ -304,13 +305,13 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
           ),
         ),
         Visibility(
-          visible: selectedLangganan == 'Gedung',
+          visible: selectedLangganan == 'Non Berlangganan',
           child: const SizedBox(
             height: 20,
           ),
         ),
         Visibility(
-          visible: selectedLangganan == 'Gedung',
+          visible: selectedLangganan == 'Non Berlangganan',
           child: DropdownButtonFormField(
             value: selectedKeperluan,
             items: optionsKeperluan.map((String option) {
@@ -321,7 +322,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
             }).toList(),
             onChanged: (newValue) {
               if (selectedTipe == 'Organisasi' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   newValue == 'Hajatan / pernikahan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(1);
@@ -329,7 +330,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiHargaGedung(eventData.organisasi);
                 eventViewModel.gantiTipeSesi('/ Hari');
               } else if (selectedTipe == 'Perorangan' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   newValue == 'Hajatan / pernikahan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(1);
@@ -338,7 +339,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiTipeSesi('/ Hari');
               }
               if (selectedTipe == 'Organisasi' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   newValue == 'Pameran/Expo') {
                 setState(() {
                   eventData = eventViewModel.getEventById(2);
@@ -346,7 +347,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiHargaGedung(eventData.organisasi);
                 eventViewModel.gantiTipeSesi('/ Hari');
               } else if (selectedTipe == 'Perorangan' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   newValue == 'Pameran/Expo') {
                 setState(() {
                   eventData = eventViewModel.getEventById(2);
@@ -355,7 +356,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiTipeSesi('/ Hari');
               }
               if (selectedTipe == 'Organisasi' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   newValue == 'Turnamen/Pertandingan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(3);
@@ -363,7 +364,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiHargaGedung(eventData.organisasi);
                 eventViewModel.gantiTipeSesi('/ Hari');
               } else if (selectedTipe == 'Perorangan' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   newValue == 'Turnamen/Pertandingan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(3);
@@ -372,7 +373,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiTipeSesi('/ Hari');
               }
               if (selectedTipe == 'Organisasi' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   newValue == 'Rapat/Pertemuan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(4);
@@ -380,7 +381,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiHargaGedung(eventData.organisasi);
                 eventViewModel.gantiTipeSesi('/ Hari');
               } else if (selectedTipe == 'Perorangan' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   newValue == 'Rapat/Pertemuan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(4);
@@ -459,7 +460,8 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
           ),
         ),
         Visibility(
-          visible: selectedLangganan == 'Gedung' && selectedKeperluan != null,
+          visible: selectedLangganan == 'Non Berlangganan' &&
+              selectedKeperluan != null,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -518,13 +520,13 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
           ),
         ),
         Visibility(
-          visible: selectedLangganan == 'Gedung',
+          visible: selectedLangganan == 'Non Berlangganan',
           child: const SizedBox(
             height: 20,
           ),
         ),
         Visibility(
-          visible: selectedLangganan == 'Gedung',
+          visible: selectedLangganan == 'Non Berlangganan',
           child: DropdownButtonFormField(
             value: selectedTipe,
             items: optionsTipe.map((String option) {
@@ -535,7 +537,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
             }).toList(),
             onChanged: (newValue) {
               if (newValue == 'Organisasi' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   selectedKeperluan == 'Hajatan / pernikahan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(1);
@@ -543,7 +545,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiHargaGedung(eventData.organisasi);
                 eventViewModel.gantiTipeSesi('/ Hari');
               } else if (newValue == 'Perorangan' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   selectedKeperluan == 'Hajatan / pernikahan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(1);
@@ -552,7 +554,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiTipeSesi('/ Hari');
               }
               if (newValue == 'Organisasi' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   selectedKeperluan == 'Pameran/Expo') {
                 setState(() {
                   eventData = eventViewModel.getEventById(2);
@@ -560,7 +562,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiHargaGedung(eventData.organisasi);
                 eventViewModel.gantiTipeSesi('/ Hari');
               } else if (newValue == 'Perorangan' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   selectedKeperluan == 'Pameran/Expo') {
                 setState(() {
                   eventData = eventViewModel.getEventById(2);
@@ -569,7 +571,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiTipeSesi('/ Hari');
               }
               if (newValue == 'Organisasi' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   selectedKeperluan == 'Turnamen/Pertandingan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(3);
@@ -577,7 +579,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiHargaGedung(eventData.organisasi);
                 eventViewModel.gantiTipeSesi('/ Hari');
               } else if (newValue == 'Perorangan' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   selectedKeperluan == 'Turnamen/Pertandingan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(3);
@@ -586,7 +588,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiTipeSesi('/ Hari');
               }
               if (newValue == 'Organisasi' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   selectedKeperluan == 'Rapat/Pertemuan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(4);
@@ -594,7 +596,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                 eventViewModel.gantiHargaGedung(eventData.organisasi);
                 eventViewModel.gantiTipeSesi('/ Hari');
               } else if (newValue == 'Perorangan' &&
-                  selectedLangganan == 'Gedung' &&
+                  selectedLangganan == 'Non Berlangganan' &&
                   selectedKeperluan == 'Rapat/Pertemuan') {
                 setState(() {
                   eventData = eventViewModel.getEventById(4);
@@ -969,7 +971,7 @@ class _FormPilihan2WidgetState extends State<FormPilihan2Widget> {
                       makePemesananBulanan(5);
                     }
                   }
-                } else if (selectedLangganan == 'Gedung') {
+                } else if (selectedLangganan == 'Non Berlangganan') {
                   if (selectedKeperluan == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
